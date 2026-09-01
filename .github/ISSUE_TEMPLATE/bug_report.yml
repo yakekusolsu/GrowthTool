@@ -1,0 +1,65 @@
+name: Bug report
+description: Report a reproducible problem in GrowthTools
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a problem. Remove secrets and player data from logs.
+  - type: input
+    id: growthtools-version
+    attributes:
+      label: GrowthTools version
+      placeholder: e.g. 0.1.0-SNAPSHOT and commit hash
+    validations:
+      required: true
+  - type: input
+    id: paper-version
+    attributes:
+      label: Paper version
+      placeholder: Output of /version
+    validations:
+      required: true
+  - type: input
+    id: java-version
+    attributes:
+      label: Java version
+      placeholder: Output of java -version
+    validations:
+      required: true
+  - type: textarea
+    id: integrations
+    attributes:
+      label: Installed integrations
+      description: Include plugin names and exact versions (PlaceholderAPI, Vault/provider, WorldGuard, mcMMO, Jobs, Geyser, Floodgate).
+    validations:
+      required: true
+  - type: textarea
+    id: doctor-report
+    attributes:
+      label: /gt doctor export attachment
+      description: Attach the generated report after checking that it contains no data you consider sensitive.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      placeholder: Provide the smallest reliable sequence of steps.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or configuration
+      render: shell

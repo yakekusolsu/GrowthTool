@@ -1,0 +1,264 @@
+# GrowthTools configuration
+config-version: 1
+
+language: en
+
+# When enabled, rejected Block EXP attempts include a reason and decision state in the log.
+# Keep disabled in production unless actively diagnosing a problem.
+debug: false
+
+database:
+  file: growthtools.db
+
+leveling:
+  # Required EXP to advance is: current level * this value.
+  experience-per-level: 100
+  maximum-level: 500
+
+experience:
+  # Creative players gain no Growth EXP unless explicitly enabled.
+  creative-mode: false
+
+  # Unlisted blocks grant zero EXP. Negative values are rejected on load.
+  blocks:
+    # Pickaxe: stone and similar terrain
+    STONE: 1
+    COBBLESTONE: 1
+    DEEPSLATE: 2
+    COBBLED_DEEPSLATE: 2
+    ANDESITE: 1
+    DIORITE: 1
+    GRANITE: 1
+    TUFF: 1
+    CALCITE: 1
+    BLACKSTONE: 2
+    BASALT: 2
+
+    # Pickaxe: ores
+    COAL_ORE: 3
+    DEEPSLATE_COAL_ORE: 4
+    COPPER_ORE: 3
+    DEEPSLATE_COPPER_ORE: 4
+    IRON_ORE: 5
+    DEEPSLATE_IRON_ORE: 6
+    GOLD_ORE: 7
+    DEEPSLATE_GOLD_ORE: 8
+    REDSTONE_ORE: 5
+    DEEPSLATE_REDSTONE_ORE: 6
+    LAPIS_ORE: 6
+    DEEPSLATE_LAPIS_ORE: 7
+    DIAMOND_ORE: 20
+    DEEPSLATE_DIAMOND_ORE: 25
+    EMERALD_ORE: 20
+    DEEPSLATE_EMERALD_ORE: 25
+    NETHER_GOLD_ORE: 5
+    NETHER_QUARTZ_ORE: 5
+    ANCIENT_DEBRIS: 30
+
+    # Pickaxe: other common blocks
+    NETHERRACK: 1
+    END_STONE: 2
+    OBSIDIAN: 10
+    CRYING_OBSIDIAN: 12
+    PRISMARINE: 2
+    PRISMARINE_BRICKS: 3
+    DARK_PRISMARINE: 3
+    BRICKS: 2
+    NETHER_BRICKS: 2
+    STONE_BRICKS: 2
+    MOSSY_STONE_BRICKS: 2
+    CRACKED_STONE_BRICKS: 2
+    CHISELED_STONE_BRICKS: 2
+    DEEPSLATE_BRICKS: 2
+    CRACKED_DEEPSLATE_BRICKS: 2
+    DEEPSLATE_TILES: 3
+    CRACKED_DEEPSLATE_TILES: 3
+
+    # Axe: Overworld logs, wood, stripped variants, and planks
+    OAK_LOG: 2
+    STRIPPED_OAK_LOG: 2
+    OAK_WOOD: 2
+    STRIPPED_OAK_WOOD: 2
+    OAK_PLANKS: 2
+    SPRUCE_LOG: 2
+    STRIPPED_SPRUCE_LOG: 2
+    SPRUCE_WOOD: 2
+    STRIPPED_SPRUCE_WOOD: 2
+    SPRUCE_PLANKS: 2
+    BIRCH_LOG: 2
+    STRIPPED_BIRCH_LOG: 2
+    BIRCH_WOOD: 2
+    STRIPPED_BIRCH_WOOD: 2
+    BIRCH_PLANKS: 2
+    JUNGLE_LOG: 2
+    STRIPPED_JUNGLE_LOG: 2
+    JUNGLE_WOOD: 2
+    STRIPPED_JUNGLE_WOOD: 2
+    JUNGLE_PLANKS: 2
+    ACACIA_LOG: 2
+    STRIPPED_ACACIA_LOG: 2
+    ACACIA_WOOD: 2
+    STRIPPED_ACACIA_WOOD: 2
+    ACACIA_PLANKS: 2
+    DARK_OAK_LOG: 2
+    STRIPPED_DARK_OAK_LOG: 2
+    DARK_OAK_WOOD: 2
+    STRIPPED_DARK_OAK_WOOD: 2
+    DARK_OAK_PLANKS: 2
+    MANGROVE_LOG: 2
+    STRIPPED_MANGROVE_LOG: 2
+    MANGROVE_WOOD: 2
+    STRIPPED_MANGROVE_WOOD: 2
+    MANGROVE_PLANKS: 2
+    CHERRY_LOG: 2
+    STRIPPED_CHERRY_LOG: 2
+    CHERRY_WOOD: 2
+    STRIPPED_CHERRY_WOOD: 2
+    CHERRY_PLANKS: 2
+    PALE_OAK_LOG: 2
+    STRIPPED_PALE_OAK_LOG: 2
+    PALE_OAK_WOOD: 2
+    STRIPPED_PALE_OAK_WOOD: 2
+    PALE_OAK_PLANKS: 2
+
+    # Axe: Nether and bamboo wood families
+    CRIMSON_STEM: 2
+    STRIPPED_CRIMSON_STEM: 2
+    CRIMSON_HYPHAE: 2
+    STRIPPED_CRIMSON_HYPHAE: 2
+    CRIMSON_PLANKS: 2
+    WARPED_STEM: 2
+    STRIPPED_WARPED_STEM: 2
+    WARPED_HYPHAE: 2
+    STRIPPED_WARPED_HYPHAE: 2
+    WARPED_PLANKS: 2
+    BAMBOO_BLOCK: 2
+    STRIPPED_BAMBOO_BLOCK: 2
+    BAMBOO_PLANKS: 2
+    BAMBOO_MOSAIC: 2
+    MANGROVE_ROOTS: 2
+    MUDDY_MANGROVE_ROOTS: 2
+
+    # Shovel
+    DIRT: 1
+    GRASS_BLOCK: 1
+    COARSE_DIRT: 1
+    ROOTED_DIRT: 1
+    PODZOL: 1
+    MYCELIUM: 1
+    SAND: 1
+    RED_SAND: 1
+    GRAVEL: 1
+    CLAY: 1
+    SOUL_SAND: 1
+    SOUL_SOIL: 1
+    SNOW: 1
+    SNOW_BLOCK: 1
+    POWDER_SNOW: 1
+    MUD: 1
+
+    # Hoe: ageable crops award EXP only when mature
+    WHEAT: 2
+    CARROTS: 2
+    POTATOES: 2
+    BEETROOTS: 2
+    NETHER_WART: 2
+    MELON: 2
+    PUMPKIN: 2
+    HAY_BLOCK: 2
+    MOSS_BLOCK: 1
+    SCULK: 2
+    SCULK_VEIN: 2
+    SCULK_CATALYST: 5
+    SCULK_SENSOR: 4
+    SCULK_SHRIEKER: 5
+
+    # Hoe: leaves
+    OAK_LEAVES: 1
+    SPRUCE_LEAVES: 1
+    BIRCH_LEAVES: 1
+    JUNGLE_LEAVES: 1
+    ACACIA_LEAVES: 1
+    DARK_OAK_LEAVES: 1
+    MANGROVE_LEAVES: 1
+    CHERRY_LEAVES: 1
+    PALE_OAK_LEAVES: 1
+    AZALEA_LEAVES: 1
+    FLOWERING_AZALEA_LEAVES: 1
+
+  fishing:
+    enabled: true
+    default-exp: 5
+
+  bow:
+    enabled: true
+    hit-exp: 3
+
+# Phase 5 built-ins. Unlocks are derived from tool level and are not stored in PDC.
+abilities:
+  creative-mode: false
+  lore:
+    enabled: true
+    maximum-entries: 8
+
+  vein-miner:
+    enabled: true
+    unlock-level: 25
+    # Each player-originated BlockBreak may activate while the player is sneaking.
+    cooldown-seconds: 0.0
+    require-sneak: true
+    max-blocks: 16
+    diagonal: true
+    extra-block-exp-multiplier: 0.25
+    # Materials in the same group connect, including normal/deepslate variants.
+    ore-groups:
+      coal: [COAL_ORE, DEEPSLATE_COAL_ORE]
+      iron: [IRON_ORE, DEEPSLATE_IRON_ORE]
+      copper: [COPPER_ORE, DEEPSLATE_COPPER_ORE]
+      gold: [GOLD_ORE, DEEPSLATE_GOLD_ORE, NETHER_GOLD_ORE]
+      redstone: [REDSTONE_ORE, DEEPSLATE_REDSTONE_ORE]
+      emerald: [EMERALD_ORE, DEEPSLATE_EMERALD_ORE]
+      lapis: [LAPIS_ORE, DEEPSLATE_LAPIS_ORE]
+      diamond: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE]
+      quartz: [NETHER_QUARTZ_ORE]
+      ancient-debris: [ANCIENT_DEBRIS]
+
+  auto-smelt:
+    enabled: true
+    unlock-level: 50
+    cooldown-seconds: 0.0
+    disable-with-silk-touch: true
+
+  area-break:
+    enabled: true
+    unlock-level: 75
+    # Each player-originated BlockBreak may activate while the player is sneaking.
+    cooldown-seconds: 0.0
+    require-sneak: true
+    radius: 1
+    extra-block-exp-multiplier: 0.25
+
+  experience-boost:
+    enabled: true
+    unlock-level: 100
+    cooldown-seconds: 0.0
+    multiplier: 1.25
+
+integrations:
+  placeholderapi:
+    enabled: true
+  vault:
+    enabled: true
+  mcmmo:
+    enabled: true
+    grant-growthtools-exp-from-mcmmo: false
+    ability-extra-block-rewards: false
+  jobs:
+    enabled: true
+    ability-extra-block-rewards: false
+  worldguard:
+    enabled: true
+  geyser:
+    enabled: true
+  floodgate:
+    enabled: true

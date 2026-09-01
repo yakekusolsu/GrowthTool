@@ -1,0 +1,114 @@
+# User-facing messages. Keep keys stable so additional locale files can be added later.
+prefix: "&8[&aGrowthTools&8] &r"
+command:
+  usage: "&7Usage: &f/gt [version|reload|give|inspect|debug|repair|regenerate-id|ability|integrations|doctor]"
+  version: "&7Running &aGrowthTools &fv{version}&7."
+  reload-success: "&aConfiguration and messages reloaded."
+  reload-failed: "&cReload rejected because configuration contains critical errors. Check the console."
+  no-permission: "&cYou do not have permission to use this command."
+  unknown-subcommand: "&cUnknown subcommand. &7Use &f/gt&7 for help."
+  give-usage: "&7Usage: &f/gt give <player> <type>"
+  give-success: "&aGave {player} a new {type} GrowthTool."
+  player-not-found: "&cPlayer '{player}' is not online."
+  invalid-type: "&cUnknown GrowthTool type '{type}'."
+  inspect-usage: "&7Usage: &f/gt inspect"
+  player-only: "&cOnly a player can use this command with a main-hand item."
+  inspect-not-growth-tool: "&cThis item is not a GrowthTool."
+  inspect-result: |-
+    &aGrowthTool
+    &7UUID: &f{id}
+    &7Type: &f{type}
+    &7Level: &f{level}
+    &7Total EXP: &f{experience}
+    &7Data Version: &f{data-version}
+    &7Created At: &f{created-at}
+    &7Material: &f{material}
+    &7Registry Status: &f{status}
+    &7Last Owner: &f{last-owner}
+    &7Last Seen: &f{last-seen}
+    &7Duplicate: &f{duplicate}
+admin:
+  debug-usage: "&7Usage: &f/gt debug <tool|registry <uuid>|database|add-level <levels>>"
+  debug-level-invalid: "&cLevels must be a positive whole number."
+  debug-level-maximum: "&eThis GrowthTool is already at the maximum Level {level}."
+  debug-level-success: "&aAdded {levels} level(s). &7Level &f{old-level} &7-> &f{new-level}&7, Total EXP: &f{experience}"
+  invalid-uuid: "&cThat value is not a valid UUID."
+  database-unavailable: "&cThe registry database is currently unavailable."
+  registry-not-found: "&eUUID {id} is not registered."
+  repair-success: "&aSafe repair completed: {detail}"
+  repair-unsafe: "&cRepair refused: {detail}"
+  regenerate-success: "&aUUID regenerated. &7Old: &f{old-id} &7New: &f{new-id}"
+  debug-tool-result: |-
+    &aGrowthTool Debug
+    &7UUID: &f{id}
+    &7Type: &f{type}
+    &7Level: &f{level}
+    &7Total EXP: &f{experience}
+    &7Data Version: &f{data-version}
+    &7Created At: &f{created-at}
+    &7Material: &f{material}
+    &7Registry Status: &f{status}
+    &7Last Owner: &f{last-owner}
+    &7Last Seen: &f{last-seen}
+    &7Duplicate: &f{duplicate}
+  registry-result: |-
+    &aRegistry Entry
+    &7UUID: &f{id}
+    &7Type: &f{type}
+    &7Level: &f{level}
+    &7Total EXP: &f{experience}
+    &7Data Version: &f{data-version}
+    &7First Seen: &f{first-seen}
+    &7Last Seen: &f{last-seen}
+    &7Last Owner: &f{owner}
+    &7Status: &f{status}
+  database-result: |-
+    &aDatabase Debug
+    &7Connected: &f{connected}
+    &7Schema Version: &f{schema-version}
+    &7Registered Tools: &f{tools}
+    &7Duplicate Tools: &f{duplicates}
+    &7Tracked Placed Blocks: &f{blocks}
+    &7Database File Size: &f{file-size} bytes
+lore:
+  title: "&aGrowthTools"
+  level: "&7Level: &f{level}"
+  experience: "&7EXP: &f{experience} / {required}"
+  experience-max: "&7EXP: &6MAX"
+  abilities-title: "&8Abilities"
+  ability: "&7- &f{ability} &8(L{level})"
+ability:
+  activated: "&a{ability} activated. &7Affected: &f{blocks}"
+  unlocked: "&6Ability unlocked: &f{ability} &7(Level {level})"
+  usage: "&7Usage: &f/gt ability <list|info <ability>|debug>"
+  list: |-
+    &aRegistered Abilities
+    &f{abilities}
+  not-found: "&cUnknown ability '{ability}'."
+  info: |-
+    &aAbility: &f{name}
+    &7ID: &f{id}
+    &7Description: &f{description}
+    &7Trigger: &f{trigger}
+    &7Enabled: &f{enabled}
+    &7Unlock Level: &f{level}
+    &7Cooldown: &f{cooldown} ms
+    &7Tool Types: &f{types}
+    &7Settings: &f{settings}
+  debug: |-
+    &aMain-hand Ability Debug
+    &f{details}
+level-up:
+  message: "&aYour {type} reached Level {level}! &7(+{levels} levels)"
+  maximum: "&6Your {type} reached the maximum Level {level}!"
+integrations:
+  report: |-
+    &aGrowthTools Integrations
+    &f{report}
+doctor:
+  report: |-
+    &aGrowthTools Doctor
+    &f{report}
+  usage: "&7Usage: &f/gt doctor [export]"
+  exported: "&aDiagnostics exported to &f{file}"
+  failed: "&cDiagnostics failed. Check the server log."

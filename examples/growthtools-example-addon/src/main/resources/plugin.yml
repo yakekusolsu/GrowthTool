@@ -1,0 +1,12 @@
+name: GrowthToolsExample
+version: '${version}'
+main: dev.yakekusolsu.growthtools.example.GrowthToolsExamplePlugin
+api-version: '1.21'
+depend: [GrowthTools]
+commands:
+  gtexample:
+    description: Adds one example EXP point to the held GrowthTool.
+    permission: growthtoolsexample.command
+permissions:
+  growthtoolsexample.command:
+    default: op

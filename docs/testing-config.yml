@@ -1,0 +1,97 @@
+# Disposable Paper QA profile for GrowthTools 0.7.0-alpha.1.
+# Do not use this progression curve on a production server. Back up the original
+# plugins/GrowthTools/config.yml, stop Paper, copy this file as config.yml, and restart.
+config-version: 1
+language: en
+debug: true
+
+database:
+  file: growthtools-qa.db
+
+leveling:
+  experience-per-level: 1
+  maximum-level: 105
+
+experience:
+  creative-mode: false
+  blocks:
+    DIRT: 1
+    STONE: 1000
+    COAL_ORE: 3
+    COPPER_ORE: 3
+    IRON_ORE: 5
+    DEEPSLATE_IRON_ORE: 5
+    GOLD_ORE: 7
+    REDSTONE_ORE: 5
+    LAPIS_ORE: 6
+    DIAMOND_ORE: 20
+    DEEPSLATE_DIAMOND_ORE: 25
+    EMERALD_ORE: 20
+    NETHER_QUARTZ_ORE: 5
+    ANCIENT_DEBRIS: 30
+    OBSIDIAN: 10
+    OAK_LOG: 2
+    SAND: 1
+    WHEAT: 2
+    OAK_LEAVES: 1
+  fishing:
+    enabled: true
+    default-exp: 5
+  bow:
+    enabled: true
+    hit-exp: 3
+
+abilities:
+  creative-mode: false
+  lore:
+    enabled: true
+    maximum-entries: 8
+  vein-miner:
+    enabled: true
+    unlock-level: 2
+    cooldown-seconds: 0.0
+    require-sneak: true
+    max-blocks: 16
+    diagonal: true
+    extra-block-exp-multiplier: 0.25
+    ore-groups:
+      iron: [IRON_ORE, DEEPSLATE_IRON_ORE]
+      copper: [COPPER_ORE, DEEPSLATE_COPPER_ORE]
+      gold: [GOLD_ORE, DEEPSLATE_GOLD_ORE, NETHER_GOLD_ORE]
+      diamond: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE]
+  auto-smelt:
+    enabled: true
+    unlock-level: 3
+    cooldown-seconds: 0.0
+    disable-with-silk-touch: true
+  area-break:
+    enabled: true
+    unlock-level: 4
+    cooldown-seconds: 0.0
+    require-sneak: true
+    radius: 1
+    extra-block-exp-multiplier: 0.25
+  experience-boost:
+    enabled: true
+    unlock-level: 5
+    cooldown-seconds: 0.0
+    multiplier: 1.25
+
+integrations:
+  placeholderapi:
+    enabled: true
+  vault:
+    enabled: true
+  mcmmo:
+    enabled: true
+    grant-growthtools-exp-from-mcmmo: false
+    ability-extra-block-rewards: false
+  jobs:
+    enabled: true
+    ability-extra-block-rewards: false
+  worldguard:
+    enabled: true
+  geyser:
+    enabled: true
+  floodgate:
+    enabled: true

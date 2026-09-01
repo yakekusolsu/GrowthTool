@@ -1,0 +1,5 @@
+name: GrowthToolsFailureFixture
+version: '${version}'
+main: dev.yakekusolsu.growthtools.failurefixture.GrowthToolsFailureFixturePlugin
+api-version: '1.21'
+depend: [GrowthTools]

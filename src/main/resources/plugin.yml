@@ -1,0 +1,47 @@
+name: GrowthTools
+version: '${version}'
+main: dev.yakekusolsu.growthtools.GrowthToolsPlugin
+description: Adds a foundation for level, experience, and ability progression on tools and weapons.
+api-version: '1.21'
+authors: [yakekusolsu]
+website: https://github.com/yakekusolsu/GrowthTool
+softdepend: [PlaceholderAPI, Vault, mcMMO, Jobs, WorldGuard, Geyser-Spigot, floodgate]
+
+commands:
+  growthtools:
+    description: Shows GrowthTools information and administrative commands.
+    usage: /<command> [version|reload|give|inspect|debug|repair|regenerate-id|ability|integrations|doctor]
+    aliases: [gt]
+    permission: growthtools.command
+
+permissions:
+  growthtools.command:
+    description: Allows use of the GrowthTools base command.
+    default: true
+  growthtools.admin.reload:
+    description: Allows reloading GrowthTools configuration and messages.
+    default: op
+  growthtools.admin.give:
+    description: Allows creating and giving new GrowthTools to online players.
+    default: op
+  growthtools.admin.inspect:
+    description: Allows inspecting GrowthTool data on the main-hand item.
+    default: op
+  growthtools.admin.debug:
+    description: Allows GrowthTool, registry, database, and level debugging.
+    default: op
+  growthtools.admin.repair:
+    description: Allows safe repair of a main-hand GrowthTool.
+    default: op
+  growthtools.admin.regenerateid:
+    description: Allows explicit regeneration of a GrowthTool UUID.
+    default: op
+  growthtools.admin.ability:
+    description: Allows listing and debugging registered abilities.
+    default: op
+  growthtools.admin.integrations:
+    description: Shows optional integration health.
+    default: op
+  growthtools.admin.doctor:
+    description: Runs and exports privacy-safe diagnostics.
+    default: op
