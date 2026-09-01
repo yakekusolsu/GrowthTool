@@ -34,3 +34,5 @@ Complete the PR template with motivation, compatibility impact, and tests actual
 Bug reports should include GrowthTools, Paper, Java, and optional-integration versions plus a sanitized `/gt doctor export`. Do not post vulnerabilities publicly; follow `SECURITY.md`.
 
 Contributions are licensed under the MIT License.
+
+Maintainers preparing a publication must follow [docs/releasing.md](docs/releasing.md). Never place publishing tokens or unverified external project IDs in source, Gradle properties, workflow files, diagnostics, or issue reports.

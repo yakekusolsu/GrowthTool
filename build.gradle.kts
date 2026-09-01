@@ -4,6 +4,7 @@ import java.security.MessageDigest
 plugins {
     java
     id("xyz.jpenilla.run-paper") version "3.0.2"
+    id("com.modrinth.minotaur") version "2.9.0"
 }
 
 group = "dev.yakekusolsu.growthtools"
@@ -78,6 +79,49 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 val pluginVersion = version.toString()
+val modrinthToken = providers.environmentVariable("MODRINTH_TOKEN")
+val modrinthProjectId = providers.environmentVariable("MODRINTH_PROJECT_ID")
+    .orElse(providers.gradleProperty("modrinth.projectId"))
+val modrinthChangelogFile = providers.environmentVariable("MODRINTH_CHANGELOG_FILE")
+    .orElse(providers.gradleProperty("modrinth.changelogFile"))
+val modrinthChangelog = providers.environmentVariable("MODRINTH_CHANGELOG")
+    .orElse(modrinthChangelogFile.map { path ->
+        val changelogFile = file(path)
+        check(changelogFile.isFile) { "Modrinth changelog file does not exist: $path" }
+        changelogFile.readText(Charsets.UTF_8)
+    })
+    .orElse(providers.provider {
+        val changelog = file("CHANGELOG.md").readText(Charsets.UTF_8)
+        val sectionStart = changelog.indexOf("## [$pluginVersion]")
+        check(sectionStart >= 0) { "CHANGELOG.md has no section for $pluginVersion" }
+        val nextSection = changelog.indexOf("\n## [", sectionStart + 1)
+        val referenceLinks = changelog.indexOf("\n[Unreleased]:", sectionStart + 1)
+        val sectionEnd = listOf(nextSection, referenceLinks)
+            .filter { it >= 0 }
+            .minOrNull() ?: changelog.length
+        changelog.substring(sectionStart, sectionEnd).trim()
+    })
+
+modrinth {
+    token.set(modrinthToken)
+    projectId.set(modrinthProjectId)
+    versionNumber.set(pluginVersion)
+    versionName.set("GrowthTools v$pluginVersion")
+    versionType.set("alpha")
+    gameVersions.addAll("1.21.4", "1.21.10", "1.21.11")
+    loaders.add("paper")
+    changelog.set(modrinthChangelog)
+    detectLoaders.set(false)
+    failSilently.set(false)
+
+    val uploadOverride = providers.environmentVariable("MODRINTH_UPLOAD_FILE").orNull
+    if (uploadOverride == null) {
+        uploadFile.set(tasks.jar)
+    } else {
+        uploadFile.set(file(uploadOverride))
+    }
+}
+
 tasks.processResources {
     filteringCharset = "UTF-8"
     filesMatching("plugin.yml") {
@@ -250,10 +294,23 @@ tasks.check {
     dependsOn(jarAudit, verifyApiBaseline)
 }
 
-tasks.register<GradleBuild>("releaseBuild") {
+val releaseBuild = tasks.register<GradleBuild>("releaseBuild") {
     description = "Runs a clean, complete, audited pre-release build."
     group = "release"
     tasks = listOf("clean", "build", "jarAudit", "verifyApiBaseline")
+}
+
+tasks.named("modrinth") {
+    description = "Runs release verification and publishes only the plugin JAR to Modrinth."
+    dependsOn(releaseBuild)
+    doFirst {
+        check(modrinthToken.orNull?.isNotBlank() == true) {
+            "MODRINTH_TOKEN is required only when publishing to Modrinth."
+        }
+        check(modrinthProjectId.orNull?.isNotBlank() == true) {
+            "Set MODRINTH_PROJECT_ID or -Pmodrinth.projectId before publishing to Modrinth."
+        }
+    }
 }
 
 tasks.runServer {
